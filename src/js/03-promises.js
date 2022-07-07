@@ -26,15 +26,18 @@ const submitFn = event => {
   }
   amountArr.map((num)=>{
     position = num
-    delayValue = position === 1 ? delayValue : (delayValue += stepValue);
-    createPromise(position, delayValue)
-    .then(({position, delayValue})=>{
-      Notiflix.Notify.success(`🥳 Fulfilled promise ${position} in ${delayValue}ms`);
-      console.log(`✅ Fulfilled promise ${position} in ${delayValue}ms`);
+    delay = position === 1 ? delayValue : (delayValue += stepValue);
+   
+    console.log('delayValue :>> ', delay);
+
+    createPromise(position, delay)
+    .then(({position, delay})=>{
+      Notiflix.Notify.success(`🥳 Fulfilled promise ${position} in ${delay}ms`);
+      console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
-    .catch(({position, delayValue})=>{
-      Notiflix.Notify.failure(`💥 Rejected promise ${position} in ${delayValue}ms`)
-      console.log(`❌ Rejected promise ${position} in ${delayValue}ms`)
+    .catch(({position, delay})=>{
+      Notiflix.Notify.failure(`💥 Rejected promise ${position} in ${delay}ms`)
+      console.log(`❌ Rejected promise ${position} in ${delay}ms`)
     })
   })
   formEl.reset()

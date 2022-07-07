@@ -11,6 +11,7 @@ const body = document.querySelector("body")
 const divTimerEl = document.querySelector(".timer")
 
 let selectedDate = null
+let setIntervalId=null;
 
 buttonStartEl.setAttribute("disabled", "true")
 
@@ -49,16 +50,24 @@ const options = {
     }
 
     const startTimerFn = () => {
-        setInterval(() => {
+      
+      buttonStartEl.setAttribute("disabled", "true")
+      setIntervalId = setInterval(() => {
                 const different = selectedDate - Date.now();
                 const { days, hours, minutes, seconds } = convertMs(different);
                 daysValueEl.textContent = days;
                 hoursValueEl.textContent = hours;
                 minutesValueEl.textContent = minutes;
                 secondsValueEl.textContent = seconds;
+                // console.log(selectedDate- Date.now())
+                if (selectedDate - Date.now() < 1000){
+                  clearInterval(setIntervalId)
+                }
               }, 
               1000);
+              
     }
+   
 
     body.style.backgroundColor = "#212b46";
     body.style.color= "#c1c0c4";
