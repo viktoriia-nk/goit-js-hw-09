@@ -26,9 +26,11 @@ const submitFn = event => {
   }
   amountArr.map((num)=>{
     position = num
+    
     if (position === 1){
-      delay = delayValue
-    }  delay = delayValue += stepValue;
+      delay = Number(delayEl.value)
+      console.log (delay);
+    } else{delay = delayValue += stepValue;} 
    
     
 
