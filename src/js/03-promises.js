@@ -26,16 +26,20 @@ const submitFn = event => {
   }
   amountArr.map((num)=>{
     position = num
-    delay = position === 1 ? delayValue : (delayValue += stepValue);
+    if (position === 1){
+      delay = delayValue
+    }  delay = delayValue += stepValue;
    
-    console.log('delayValue :>> ', delay);
+    
 
     createPromise(position, delay)
     .then(({position, delay})=>{
+      console.log('delayValue :>> ', delay);
       Notiflix.Notify.success(`🥳 Fulfilled promise ${position} in ${delay}ms`);
       console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
     .catch(({position, delay})=>{
+      console.log('delayValue :>> ', delay);
       Notiflix.Notify.failure(`💥 Rejected promise ${position} in ${delay}ms`)
       console.log(`❌ Rejected promise ${position} in ${delay}ms`)
     })
