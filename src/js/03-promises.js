@@ -10,7 +10,7 @@ let stepValue
 let amountValue 
 let amountArr = []
 let position = 0
-
+let delay
 
 const submitFn = event => {
   event.preventDefault()
